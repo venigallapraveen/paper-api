@@ -10,6 +10,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
+//getscreams
 exports.getScreams = functions.https.onRequest((req, res) => {
   admin
     .firestore()
