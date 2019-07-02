@@ -4,7 +4,11 @@ const FBAuth = require("./util/fbAuth");
 
 const { db } = require("./util/admin");
 
-const { getAllScreams, postOneScream } = require("./handlers/screams");
+const {
+  getAllScreams,
+  postOneScream,
+  getScream
+} = require("./handlers/screams");
 const {
   signup,
   login,
@@ -16,6 +20,7 @@ const {
 //scream routes
 app.get("/screams", getAllScreams);
 app.post("/scream", FBAuth, postOneScream);
+app.get("/scream/:screamId", getScream);
 
 //user routes
 app.post("/signup", signup);
