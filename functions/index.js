@@ -9,7 +9,8 @@ const {
   signup,
   login,
   uploadImage,
-  addUserDetails
+  addUserDetails,
+  getAuthenticatedUser
 } = require("./handlers/users");
 
 //scream routes
@@ -21,5 +22,6 @@ app.post("/signup", signup);
 app.post("/login", login);
 app.post("/user/image", FBAuth, uploadImage);
 app.post("/user", FBAuth, addUserDetails);
+app.get("/user", FBAuth, getAuthenticatedUser);
 
 exports.api = functions.https.onRequest(app);
