@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const app = require("express")();
+const FBAuth = require("./util/fbAuth");
 
 const { db } = require("./util/admin");
 
@@ -8,7 +9,7 @@ const { signup, login } = require("./handlers/users");
 
 //scream routes
 app.get("/screams", getAllScreams);
-app.post("/scream", postOneScream);
+app.post("/scream", FBAuth, postOneScream);
 
 //user routes
 app.post("/signup", signup);
