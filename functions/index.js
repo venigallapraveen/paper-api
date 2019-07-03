@@ -64,6 +64,19 @@ exports.createNotificationOnLike = functions
       .catch(err => console.error(err));
   });
 
+exports.deleteNotificationOnUnLike = functions
+  .region("europe-west1")
+  .firestore.document("likes/{id}")
+  .onDelete(snapshot => {
+    return db
+      .doc(`/notifications/${snapshot.id}`)
+      .delete()
+      .catch(err => {
+        console.error(err);
+        return;
+      });
+  });
+
 exports.createNotificationOnComment = functions
   .region("europe-west1")
   .firestore.document("comments/{id}")
