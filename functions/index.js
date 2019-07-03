@@ -13,13 +13,15 @@ const {
   commentOnScream,
   deleteScream
 } = require("./handlers/screams");
+
 const {
   signup,
   login,
   uploadImage,
   addUserDetails,
   getAuthenticatedUser,
-  getUserDetails
+  getUserDetails,
+  markNotificationsRead
 } = require("./handlers/users");
 
 //scream routes
@@ -38,6 +40,7 @@ app.post("/user/image", FBAuth, uploadImage);
 app.post("/user", FBAuth, addUserDetails);
 app.get("/user", FBAuth, getAuthenticatedUser);
 app.get("/user/:handle", getUserDetails);
+app.post("/notifications", FBAuth, markNotificationsRead);
 
 exports.api = functions.https.onRequest(app);
 
