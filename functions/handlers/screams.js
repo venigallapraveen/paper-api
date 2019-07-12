@@ -12,7 +12,10 @@ exports.getAllScreams = (req, res) => {
           screamId: doc.id,
           body: doc.data().body,
           userHandle: doc.data().userHandle,
-          createdAt: doc.data().createdAt
+          createdAt: doc.data().createdAt,
+          userImage: doc.data().userImage,
+          likeCount: doc.data().likeCount,
+          commentCount: doc.data().commentCount
         });
       });
       return res.json(screams);
